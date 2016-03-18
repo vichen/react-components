@@ -19,21 +19,28 @@ class GroceryListItem extends React.Component {
     };
 
     return (
-      <li style={style} onmouseover={this.onListItemHover.bind(this)}>{this.props.item}</li>
+      <li style={style} onmouseover={this.onListItemHover.bind(this)}>{this.props.items}</li>
     );
   }
 
 
 }
 
-var GroceryListItem = (props) => (
+var GroceryList = (props) => {
+  return (
   <ul>
-    {props.items.map(item) =>
-      <GroceryListItem item={item} /> 
+    {props.items.map(items =>
+      <GroceryListItem items={items} /> 
       )}
   </ul>
+  )
+};
+
+var App = () => (
+  <div>
+    <h2>Grocery List</h2>
+    <GroceryList items={['apples', 'kale']}/>
+  </div>
 );
 
-
-
-ReactDOM.render(<App />, document.getElementById("div #app"));
+ReactDOM.render(<App />, document.getElementById("app"));
